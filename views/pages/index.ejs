@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="door2door">
+<head><% include ../partials/header.ejs %></head>
+<body ng-controller="AppCtrl as app">
+    <ui-gmap-google-map center='app.map.center' zoom='app.map.zoom'>
+        <ui-gmap-markers
+        models="app.markers"
+        idKey="'id'"
+        coords="'coords'"
+        options="'options'"
+        type="'cluster'"
+        typeOptions="app.cluster"
+        ></ui-gmap-markers>
+    </ui-gmap-google-map>
+</body>
+</html>

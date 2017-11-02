@@ -1,0 +1,32 @@
+{
+  "name": "door2door",
+  "version": "0.0.1",
+  "description": "door2door, the operator of the 'allygator shuttle' service in Berlin, collects the live position of all vehicles in its fleet in real-time via a GPS sensor in each vehicle.",
+  "engines": {
+    "node": "8.8.x",
+    "npm": "5.4.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/pure-sands-22358.git"
+  },
+  "author": "lerio",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-google-maps": "^2.4.1",
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-promise-router": "^2.0.0",
+    "moment": "^2.19.1",
+    "pg": "^7.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0"
+  }
+}
