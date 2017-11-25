@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest && open ./public/js/app.test.html"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "pg": "^7.3.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.6.7",
     "eslint": "^4.9.0",
     "jest": "^21.2.1",
     "request": "^2.83.0",

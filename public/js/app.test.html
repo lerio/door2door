@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <!-- Jasmine References -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.8.0/boot.min.js"></script>
+
+    <!-- Angular and Other references -->
+    <script type="text/javascript" src="./lib/lodash/lodash.min.js"></script>
+    <script type="text/javascript" src="./lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./lib/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="./lib/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+    <script type="text/javascript" src="./lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+
+
+    <!-- App references -->
+    <script type="text/javascript" src="./app.js"></script>
+</head>
+
+<body></body>
+<script type="text/javascript">
+    angular.module('calculatorApp', []).controller('CalculatorController', function CalculatorController($scope) {
+        $scope.sum = function () {
+            $scope.z = $scope.x + $scope.y;
+        };
+    });
+
+    describe('door2door App', () => {
+        const latHQ = 52.53
+        const lngHQ = 13.403
+
+        beforeEach(module('door2door'))
+        let $controller
+        let $scope = {}
+
+        beforeEach(inject((_$controller_) => {
+            $controller = _$controller_
+            let controller = $controller('AppCtrl', { $scope })
+        }))
+        describe('directionFromCoordinates', () => {
+            it('returns ~90 degrees', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, latHQ, lngHQ + 0.000001)).toEqual(90.000022030992);
+            })
+            it('returns 180 degrees', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, latHQ + 10, lngHQ)).toEqual(180);
+            })
+            it('returns ~270 degrees', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, latHQ, lngHQ - 0.000001)).toEqual(269.999977969008);
+            })
+            it('returns 360 degrees', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, latHQ - 10, lngHQ)).toEqual(360);
+            })
+            it('returns 0 when initial latitute is not given', () => {
+                expect($scope.directionFromCoordinates(null, lngHQ, latHQ, lngHQ)).toEqual(0);
+            })
+            it('returns 0 when initial longitude is not given', () => {
+                expect($scope.directionFromCoordinates(latHQ, null, latHQ, lngHQ)).toEqual(0);
+            })
+            it('returns 0 when final latitude is not given', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, null, lngHQ)).toEqual(0);
+            })
+            it('returns 0 when final longitude is not given', () => {
+                expect($scope.directionFromCoordinates(latHQ, lngHQ, latHQ, null)).toEqual(0);
+            })
+        })
+    })
+</script>
+
+</html>

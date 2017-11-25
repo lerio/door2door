@@ -4,7 +4,7 @@ angular.module('door2door', ['uiGmapgoogle-maps'])
             key: 'AIzaSyAGsg_7d8yiZcRRQbB0rNHpmkGu8UkixDI'
         })
     })
-    .controller('AppCtrl', function ($http, $timeout) {
+    .controller('AppCtrl', function ($http, $scope, $timeout) {
         // door2door coordinates
         const latHQ = 52.53
         const lngHQ = 13.403
@@ -70,5 +70,8 @@ angular.module('door2door', ['uiGmapgoogle-maps'])
         }
 
         // fetching new list every 3 seconds
-        $timeout(fetchVehicles, 3000)
+        fetchVehicles()
+
+        // adding testable functions to the scope
+        $scope.directionFromCoordinates = directionFromCoordinates
     })
