@@ -1,7 +1,8 @@
 const { Pool } = require('pg')
 const url = require('url')
+const dbUrl = process.env.DATABASE_URL || 'postgres://ggtojyxjoqnpol:20cd35b914206953f146d9119710769b584f912455688a267faa8503c5ead444@ec2-50-19-89-124.compute-1.amazonaws.com:5432/d5cib03ji3ft3a'
 
-const params = url.parse(process.env.DATABASE_URL);
+const params = url.parse(dbUrl);
 const auth = params.auth.split(':');
 
 const config = {
